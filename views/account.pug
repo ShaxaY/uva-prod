@@ -1,0 +1,60 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active': ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('#', 'Настройки', 'settings', true)
+          +navItem('#', 'My bookings', 'briefcase')
+          +navItem('#', 'My reviews', 'star')
+          +navItem('#', 'Billing', 'credit-card')
+
+        - if(user.role === 'admin')        
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('#', 'Manage tours', 'map')
+              +navItem('#', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage bookings', 'briefcase')
+
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Настройки аккаунта
+          form.form.form-user-data
+            .form__group
+              label.form__label(for='name') Имя
+              input#name.form__input(type='text', value=`${user.name}`, required)
+            .form__group.ma-bt-md
+              label.form__label(for='email') Email адрес
+              input#email.form__input(type='email', value=`${user.email}`, required)
+            .form__group.form__photo-upload
+              img.form__user-photo(src=`/img/users/${user.photo}`, alt='User photo')
+              a.btn-text(href='') Выберите новое фото
+            .form__group.right
+              button.btn.btn--small.btn--green Сохранить настройки
+        .line &nbsp;
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Поменять пароль
+          form.form.form-user-password
+            .form__group
+              label.form__label(for='password-current') Текущий пароль
+              input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group
+              label.form__label(for='password') Новый пароль
+              input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group.ma-bt-lg
+              label.form__label(for='password-confirm') Подтвердите пароль
+              input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group.right
+              button.btn.btn--small.btn--green.btn--save-password Сохранить пароль
