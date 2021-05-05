@@ -23,7 +23,6 @@ if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (userDataForm)
   userDataForm.addEventListener('submit', (e) => {
-    console.log('hello');
     e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -32,7 +31,6 @@ if (userDataForm)
 
 if (userPasswordForm)
   userPasswordForm.addEventListener('submit', async (e) => {
-    console.log('hello');
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Обновление...';
 
