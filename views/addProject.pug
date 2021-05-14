@@ -1,0 +1,60 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active': ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Настройки', 'settings')
+
+        - if(user.role === 'admin')        
+          .admin-nav
+            h5.admin-nav__heading Управление
+            ul.side-nav
+              +navItem('#', 'Добавить проект', 'file-plus', true)
+              +navItem('/addface', 'Добавить Лицо', 'user-plus')
+              
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Добавить проект
+          form.form.form-project-data
+            .form__group
+              label.form__label(for='name') Название
+              input#name.form__input(type='text', placeholder=`Имя проекта`, required)
+            .form__group
+              label.form__label(for='description') Описание
+              input#description.form__input(type='text', placeholder=`Описание проекта`, required)
+            .form__group
+              label.form__label(for='city') Город
+              input#city.form__input(type='text', placeholder=`Ташкент`, required)
+            .form__group
+              label.form__label(for='goals') Цели
+              input#goals.form__input(type='text', placeholder=`Указывать через ";" (цель1; цель2)`, required)
+
+            .form__group
+              label.form__label(for='targets') Сферы деятельности
+              input#targets.form__input(type='text', placeholder=`Указывать через ";" (сфера; сфера)`, required)
+
+            .form__group
+              label.form__label(for='actions') Действия
+              input#actions.form__input(type='text', placeholder=`Указывать через ";" (действие; действие)`, required)
+
+            .form__group
+              label.form__label(for='results') Результаты команды
+              input#results.form__input(type='text', placeholder=`Указывать через ";" (результат; результат)`, required)
+
+            .form__group.form__photo-upload
+              input.form__upload(type='file', accept='image/*', id='images', name='images', multiple, required)
+              label(for='images') Загрузить фото
+
+            .form__group.right
+              button#save.btn.btn--small.btn--green Добавить
+        

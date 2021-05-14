@@ -1,0 +1,64 @@
+extends base
+include _reviewCard
+
+mixin overviewBox(label, icon)
+	.overview-box__detail
+		svg.overview-box__icon
+			use(xlink:href=`/img/icons.svg#icon-${icon}`)
+		span.overview-box__label= label
+		
+
+block content
+	section.section-header
+		.header__hero
+			.header__hero-overlay &nbsp;
+			img.header__hero-img(src=`/img/projects/${project.imageCover}`, alt=`${project.name}`)
+
+		.heading-box
+			h1.heading-primary
+				span= `${project.name}`
+			
+
+	section.section-description
+		.overview-box
+			div
+				.overview-box__group
+					h2.heading-secondary.ma-bt-lg Результат
+					each result in project.results
+						+overviewBox(`${result.split(' ').join(' ')}`, 'check')
+					
+				.overview-box__group
+					h2.heading-secondary.ma-bt-lg Действия
+					each action in project.actions
+						+overviewBox(`${action.split(' ').join(' ')}`, 'check')
+
+
+	
+		.description-box
+			.overview-box
+			div
+				.overview-box__group
+					h2.heading-secondary.ma-bt-lg Сферы деятельности
+					each target in project.targets
+						+overviewBox(`${target.split(' ').join(' ')}`, 'check')
+
+				.overview-box__group
+					h2.heading-secondary.ma-bt-lg Цели
+					each goal, i in project.goals
+						+overviewBox(`${goal.split(' ').join(' ')}`, 'check')
+					
+
+	section.section-pictures
+		each img, i in project.images
+			.picture-box
+				img.picture-box__img(src=`/img/projects/${img}`, alt=`The Park Camper project ${i + 1}`, class=`picture-box__img--${i+1}`)
+
+	section.section-cta
+		.cta
+			
+			img.cta__img.cta__img--1(src=`/img/projects/${project.images[1]}`, alt='project picture')
+			img.cta__img.cta__img--2(src=`/img/projects/${project.images[2]}`, alt='project picture')
+			.cta__content
+				h2.heading-secondary Хотите стать частью "#{project.name}"?
+				p.cta__text Заполните анкету и мы свяжемся с вами!
+				button.btn.btn--green.span-all-rows заполнить Анкету

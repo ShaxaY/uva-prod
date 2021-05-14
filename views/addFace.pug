@@ -1,0 +1,64 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active': ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Настройки', 'settings')
+
+        - if(user.role === 'admin')        
+          .admin-nav
+            h5.admin-nav__heading Управление
+            ul.side-nav
+              +navItem('#', 'Добавить проект', 'file-plus')
+              +navItem('#', 'Добавить Лицо', 'user-plus', true)
+              
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Добавить Лицо
+          form.form.form-face-data
+            .form__group
+              label.form__label(for='name') Имя
+              input#name.form__input(type='text', placeholder=`Иванов Иван Иванович`, required)
+            .form__group
+              label.form__label(for='quote') Цитата
+              input#quote.form__input(type='text', placeholder=`Если проигравший улыбается, победитель теряет вкус победы.`, required)
+            .form__group
+              label.form__label(for='vocation') Призвание
+              input#vocation.form__input(type='text', placeholder=`Волонтёр`, required)
+            .form__group
+              label.form__label(for='experience') Опыт
+              input#experience.form__input(type='text', placeholder=`5`, required)
+
+            .form__group
+              label.form__label(for='specialization') Специализация
+              input#specialization.form__input(type='text', placeholder=`Социальное волонтёрство и эковолонтёрство`, required)
+
+            .form__group
+              label.form__label(for='activity') Деятельность
+              input#activity.form__input(type='text', placeholder=`Участие в поездках на международные форумы в качестве эксперта`, required)
+
+            //- .form__group
+            //-   label.form__label(for='best') Три лучших проекта
+            //-   input#best.form__input(type='text', placeholder=`Указывать через ";" (Проект 1; проект 2)`, required)
+
+            //- .form__group
+            //-   label.form__label(for='international') Международных мероприятия
+            //-   input#international.form__input(type='text', placeholder=`Указывать через ";" (мероприяте 1; меропиятие 2)`, required)
+
+            .form__group.form__photo-upload
+              input#image.form__upload(type='file', accept='image/*', name='image', required)
+              label(for='image') Загрузить фото
+
+            .form__group.right
+              button#save.btn.btn--small.btn--green Добавить
+        

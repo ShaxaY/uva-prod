@@ -2,43 +2,51 @@ extends base
 
 block content
   main.main
+    .about-container
+      h2.heading-secondary.ma-bt-md Кто мы?
+      .about-main.ma-bt-md UVA (Uzbekistan Volunteer Association) – это  единая площадка для объединения и продвижения инициативных групп волонтёров Узбекистана, являющаяся посредником на пути реализации амбициозных проектов и творческих идей. Это агрегатор международных проектов, событий, добровольческих акций, который  в дальнейшем будет предоставлять новые возможности для волонтёров.
+      .about-second
+        .about-col
+          h2.heading-tertiary.ma-bt-md Видение
+          p Сильное гражданское общество, где каждый вносит вклад в развитие и формирование устойчивого будущего для всех через волонтёрство.
+        .about-col
+          h2.heading-tertiary.ma-bt-md Миссия
+          p Мы создаем благоприятную и поддерживающую среду для раскрытия личностного потенциала и многостороннего развития навыков.
+
+        .about-col
+          h2.heading-tertiary.ma-bt-md Наши ориентиры
+          p Цели в области устойчивого развития ООН, направленные на создание процветающего будущего мирового сообщества.
+        
+        
+
+        
     .card-container
-      each tour in tours
+      each project in projects
         .card
           .card__header
             .card__picture
               .card__picture-overlay &nbsp;
-              img.card__picture-img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+              img.card__picture-img(src=`/img/projects/${project.imageCover}`, alt=`${project.name}`)
             h3.heading-tertirary
-              span= tour.name
+              span= project.name
 
           .card__details
-            h4.card__sub-heading= `${tour.difficulty} ${tour.duration}-day tour`
-            p.card__text= tour.summary
+            h4.card__sub-heading= `${project.description}`
+
             .card__data
               svg.card__icon
                 use(xlink:href='/img/icons.svg#icon-map-pin')
-              span= tour.startLocation.description
+              span= project.city
             .card__data
               svg.card__icon
                 use(xlink:href='/img/icons.svg#icon-calendar')
-              span= tour.startDates[0].toLocaleString('ru', {month: 'long', year: 'numeric'})
-            .card__data
-              svg.card__icon
-                use(xlink:href='/img/icons.svg#icon-flag')
-              span= `${tour.locations.length} stops`
+              span 2020 год
+            
             .card__data
               svg.card__icon
                 use(xlink:href='/img/icons.svg#icon-user')
-              span= `${tour.maxGroupSize} people`
+              span= project.results[2]
 
           .card__footer
-            p
-              span.card__footer-value= `$${tour.price}`
-              | 
-              span.card__footer-text per person
-            p.card__ratings
-              span.card__footer-value= tour.ratingsAverage
-              | 
-              span.card__footer-text= `rating (${tour.ratingsQuantity})`
-            a.btn.btn--green.btn--small(href=`/tour/${tour.slug}`) Подробнее
+            
+            a.btn.btn--green.btn--small(href=`/project/${project.slug}`) Подробнее

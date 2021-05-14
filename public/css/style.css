@@ -323,7 +323,7 @@ body {
   }
 }
 .header__logo img {
-  height: 3.5rem;
+  height: 6rem;
 }
 @media only screen and (max-width: 62.5em) {
   .header__logo {
@@ -489,7 +489,7 @@ body {
   font-weight: 700;
   margin-right: 2.25rem;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .overview-box__text {
   text-transform: capitalize;
@@ -729,6 +729,7 @@ body {
 }
 .cta__img--logo img {
   width: 100%;
+  height: 100%;
 }
 .cta__img--1 {
   -webkit-transform: translate(-10%, -50%) scale(0.97);
@@ -823,7 +824,7 @@ body {
   }
 }
 .footer__logo img {
-  height: 3rem;
+  height: 6rem;
 }
 .footer__nav {
   list-style: none;
@@ -1069,9 +1070,33 @@ body {
   border-bottom: 1px solid currentColor;
 }
 
-.card-container {
+.about-container {
   max-width: 120rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 10%);
+}
+
+.about-main {
+  font-size: 1.5rem;
+}
+
+.about-second {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.about-col {
+  max-width: 35rem;
+}
+
+.card-container {
+  max-width: 120rem;
+  margin: 5rem auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 7rem;
@@ -1144,7 +1169,8 @@ body {
   margin-top: -1rem;
   margin-bottom: 0.75rem;
 }
-.card__data {
+.card__data,
+.face__data {
   font-size: 1.3rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1153,7 +1179,12 @@ body {
   -ms-flex-align: center;
   align-items: center;
 }
-.card__data svg {
+
+.card__data:last-child {
+  grid-column: 1 / -1;
+}
+.card__data svg,
+.face__data svg {
   margin-right: 0.7rem;
 }
 .card__icon {
@@ -1166,10 +1197,9 @@ body {
   padding: 2.5rem 3rem;
   border-top: 1px solid #f1f1f1;
   font-size: 1.4rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  display: flex;
+  justify-content: center;
+
   margin-top: auto;
 }
 .card__footer-value {
@@ -1322,4 +1352,13 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+
+.quote {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.link-active {
+  border-bottom: 1px solid #fff;
 }

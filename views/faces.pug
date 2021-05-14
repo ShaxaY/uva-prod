@@ -1,0 +1,27 @@
+extends base
+
+block content
+  main.main
+    .card-container
+      each face in faces
+        .card
+          .card__header
+            .card__picture
+              
+              img.card__picture-img(src=`/img/faces/${face.photo}`, alt=`${face.name}`)
+            h3.heading-tertirary
+              span= face.name
+
+          .card__details
+            h4.card__sub-heading.quote= `"${face.quote}"`
+
+            .face__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-plus-circle')                
+              span= `${face.experience} ${face.experience < 5 ? 'года': 'лет'} опыта`
+            .face__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-shield')
+              span= face.vocation
+            
+
