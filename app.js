@@ -17,6 +17,7 @@ const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const projectRouter = require('./routes/projectRoutes');
 const faceRouter = require('./routes/faceRoutes');
+const newsRouter = require('./routes/newsRoutes');
 
 const app = express();
 
@@ -97,6 +98,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/projects', projectRouter);
 app.use('/api/v1/faces', faceRouter);
+app.use('/api/v1/news', newsRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
