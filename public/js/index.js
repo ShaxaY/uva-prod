@@ -66,6 +66,7 @@ if (projectDataForm)
     const resultsArr = document.getElementById('results').value.split(';');
     const form = new FormData();
     form.append('name', document.getElementById('name').value);
+    form.append('vol', document.getElementById('vol').value);
     form.append('description', document.getElementById('description').value);
     form.append('city', document.getElementById('city').value);
 
@@ -99,6 +100,7 @@ if (projectDataForm)
     document.getElementById('actions').value = '';
     document.getElementById('results').value = '';
     document.getElementById('city').value = '';
+    document.getElementById('vol').value = '';
 
     document.getElementById('save').textContent = 'Завершено';
 

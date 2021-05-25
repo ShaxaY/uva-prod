@@ -10,6 +10,7 @@ const projectSchema = new mongoose.Schema({
     maxlength: [40, 'Максимум 40 символов'],
     minlength: [5, 'Минимум 5 символов'],
   },
+  vol: Number,
   goals: [String],
   targets: [String],
   actions: [String],

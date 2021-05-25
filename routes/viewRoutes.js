@@ -5,12 +5,22 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/', authController.isLoggedIn, viewsController.getOverview);
+
 router.get('/faces', authController.isLoggedIn, viewsController.getFaces);
+
 router.get(
   '/project/:slug',
   authController.isLoggedIn,
   viewsController.getProject
 );
+
+router.get('/news', authController.isLoggedIn, viewsController.getNews);
+router.get(
+  '/news/:slug',
+  authController.isLoggedIn,
+  viewsController.getOneNews
+);
+
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get(

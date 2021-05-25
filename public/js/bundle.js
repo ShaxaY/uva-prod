@@ -9115,6 +9115,7 @@ if (projectDataForm) projectDataForm.addEventListener('submit', /*#__PURE__*/fun
             resultsArr = document.getElementById('results').value.split(';');
             form = new FormData();
             form.append('name', document.getElementById('name').value);
+            form.append('vol', document.getElementById('vol').value);
             form.append('description', document.getElementById('description').value);
             form.append('city', document.getElementById('city').value);
 
@@ -9140,10 +9141,10 @@ if (projectDataForm) projectDataForm.addEventListener('submit', /*#__PURE__*/fun
               form.append('images', document.getElementById('images').files[_i]);
             }
 
-            _context2.next = 18;
+            _context2.next = 19;
             return (0, _addProject.addProject)(form);
 
-          case 18:
+          case 19:
             document.getElementById('name').value = '';
             document.getElementById('description').value = '';
             document.getElementById('goals').value = '';
@@ -9151,12 +9152,13 @@ if (projectDataForm) projectDataForm.addEventListener('submit', /*#__PURE__*/fun
             document.getElementById('actions').value = '';
             document.getElementById('results').value = '';
             document.getElementById('city').value = '';
+            document.getElementById('vol').value = '';
             document.getElementById('save').textContent = 'Завершено';
             window.setTimeout(function () {
               document.getElementById('save').textContent = 'Добавить';
             }, 3000);
 
-          case 27:
+          case 29:
           case "end":
             return _context2.stop();
         }
@@ -9242,7 +9244,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60252" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54827" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

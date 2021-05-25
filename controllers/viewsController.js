@@ -1,5 +1,6 @@
 const Project = require('../models/projectModel');
 const Face = require('../models/faceModel');
+const News = require('../models/newsModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
@@ -13,6 +14,22 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   res.status(200).render('overview', {
     title: 'Главная',
     projects,
+  });
+});
+
+exports.getNews = catchAsync(async (req, res, next) => {
+  const news = await News.find();
+  res.status(200).render('news', {
+    title: 'Новости',
+    news,
+  });
+});
+
+exports.getOneNews = catchAsync(async (req, res, next) => {
+  const news = await News.findOne({ slug: req.params.slug });
+  res.status(200).render('news-single', {
+    title: 'Новости',
+    news,
   });
 });
 

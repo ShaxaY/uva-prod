@@ -1,0 +1,34 @@
+extends base
+
+mixin overviewBox(label, icon)
+	.overview-box__detail
+		svg.overview-box__icon
+			use(xlink:href=`/img/icons.svg#icon-${icon}`)
+		span.overview-box__label= label
+		
+
+block content
+	section.section-header
+		.header__hero
+			.header__hero-overlay &nbsp;
+			img.header__hero-img(src=`/img/news/${news.photo}`, alt=`${news.name}`)
+
+		.heading-box
+			h1.heading-primary
+				span= `${news.name}`
+			
+
+	section.section-description
+		.overview-box
+			div
+				.overview-box__group
+					h2.heading-secondary.ma-bt-lg Результат
+					
+
+	section.section-cta
+		.cta
+			
+			.cta__content
+				h2.heading-secondary Хотите стать частью ?
+				p.cta__text Заполните анкету и мы свяжемся с вами!
+				button.btn.btn--green.span-all-rows заполнить Анкету

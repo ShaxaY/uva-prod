@@ -9,14 +9,15 @@ const newsSchema = new mongoose.Schema({
     trim: true,
     maxlength: [40, 'Максимум 40 симсволов'],
     minlength: [5, 'Минимум 5 символов'],
-    photo: String,
-    text: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      select: false,
-    },
   },
+  photo: String,
+  text: String,
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    select: false,
+  },
+  slug: String,
 });
 
 newsSchema.pre('save', function (next) {
